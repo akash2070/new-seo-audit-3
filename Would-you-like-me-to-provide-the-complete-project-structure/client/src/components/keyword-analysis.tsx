@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+// Lightweight data visualization using CSS and HTML elements
 import { Search, TrendingUp, Target, Hash, BookOpen, Eye } from '@/components/icons';
 
 interface KeywordData {
@@ -142,21 +142,20 @@ export function KeywordAnalysis({ keywordData, contentMetrics, recommendedKeywor
                 <CardDescription>Most frequently used keywords in your content</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={topKeywords}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis 
-                      dataKey="keyword" 
-                      angle={-45}
-                      textAnchor="end"
-                      height={80}
-                      fontSize={12}
-                    />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="count" fill="#3b82f6" />
-                  </BarChart>
-                </ResponsiveContainer>
+                <div className="space-y-3">
+                  {topKeywords.slice(0, 10).map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium truncate">{item.keyword}</span>
+                        <span className="text-sm text-muted-foreground">{item.count}</span>
+                      </div>
+                      <Progress 
+                        value={(item.count / Math.max(...topKeywords.map(k => k.count))) * 100} 
+                        className="h-2"
+                      />
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
 
@@ -166,23 +165,18 @@ export function KeywordAnalysis({ keywordData, contentMetrics, recommendedKeywor
                 <CardDescription>Distribution of keyword density ranges</CardDescription>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <PieChart>
-                    <Pie
-                      data={densityDistribution}
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={80}
-                      dataKey="value"
-                      label={({ name, value }) => `${name}: ${value}`}
-                    >
-                      {densityDistribution.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                  </PieChart>
-                </ResponsiveContainer>
+                <div className="grid grid-cols-2 gap-4">
+                  {densityDistribution.map((item, index) => (
+                    <div key={index} className="text-center p-4 rounded-lg border" style={{ backgroundColor: `${item.color}10` }}>
+                      <div className="text-2xl font-bold" style={{ color: item.color }}>
+                        {item.value}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {item.name}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </div>

@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Progress } from '@/components/ui/progress';
-import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+// Lightweight SVG charts - no external dependencies
 import { TrendingUp, TrendingDown, Users, Search, Globe, Plus, Minus, AlertCircle } from '@/components/icons';
 
 interface CompetitorData {
@@ -213,29 +213,25 @@ export function CompetitorAnalysis({ currentSite }: CompetitorAnalysisProps) {
                   <CardDescription>Your site vs average competitor performance</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <RadarChart data={radarData}>
-                      <PolarGrid />
-                      <PolarAngleAxis dataKey="subject" />
-                      <PolarRadiusAxis angle={0} domain={[0, 100]} />
-                      <Radar
-                        name="Your Site"
-                        dataKey="Your Site"
-                        stroke="#3b82f6"
-                        fill="#3b82f6"
-                        fillOpacity={0.3}
-                        strokeWidth={2}
-                      />
-                      <Radar
-                        name="Average Competitor"
-                        dataKey="Average Competitor"
-                        stroke="#ef4444"
-                        fill="#ef4444"
-                        fillOpacity={0.1}
-                        strokeWidth={2}
-                      />
-                    </RadarChart>
-                  </ResponsiveContainer>
+                  <div className="grid grid-cols-2 gap-4">
+                    {radarData.map((item, index) => (
+                      <div key={index} className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>{item.subject}</span>
+                          <span className="font-medium">{item['Your Site']}%</span>
+                        </div>
+                        <Progress value={item['Your Site']} className="h-2" />
+                        <div className="flex justify-between text-xs text-muted-foreground">
+                          <span>Avg Competitor: {item['Average Competitor']}%</span>
+                          {item['Your Site'] > item['Average Competitor'] ? (
+                            <TrendingUp className="h-3 w-3 text-green-500" />
+                          ) : (
+                            <TrendingDown className="h-3 w-3 text-red-500" />
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
 

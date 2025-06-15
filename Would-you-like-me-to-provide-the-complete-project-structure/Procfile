@@ -1,1 +1,1 @@
-web: npm run build && NODE_ENV=production tsx server/production.ts
+web: npm start

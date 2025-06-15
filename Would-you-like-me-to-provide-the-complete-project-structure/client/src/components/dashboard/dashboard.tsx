@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+// Lightweight charts using CSS and SVG instead of recharts
 import { TrendingUp, TrendingDown, Globe, Star, Plus, Calendar, Activity } from '@/components/icons';
 import type { Website, AuditResponse } from '@shared/schema';
 
@@ -345,19 +345,39 @@ export function Dashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {selectedWebsite && trendData.length > 0 ? (
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={trendData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="date" tickFormatter={formatDate} />
-                    <YAxis domain={[0, 100]} />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="score" stroke="#8884d8" strokeWidth={2} />
-                    <Line type="monotone" dataKey="performance" stroke="#82ca9d" strokeWidth={2} />
-                    <Line type="monotone" dataKey="seo" stroke="#ffc658" strokeWidth={2} />
-                    <Line type="monotone" dataKey="accessibility" stroke="#ff7300" strokeWidth={2} />
-                  </LineChart>
-                </ResponsiveContainer>
+              {selectedWebsite && trendData && Array.isArray(trendData) && trendData.length > 0 ? (
+                <div className="space-y-4">
+                  {trendData.slice(0, 5).map((data: any, index: number) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>{formatDate(data.date)}</span>
+                        <span className="font-medium">Overall: {data.score}%</span>
+                      </div>
+                      <div className="grid grid-cols-4 gap-2">
+                        <div className="space-y-1">
+                          <div className="text-xs text-muted-foreground">Performance</div>
+                          <Progress value={data.performance || 0} className="h-2" />
+                          <div className="text-xs">{data.performance || 0}%</div>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs text-muted-foreground">SEO</div>
+                          <Progress value={data.seo || 0} className="h-2" />
+                          <div className="text-xs">{data.seo || 0}%</div>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs text-muted-foreground">Accessibility</div>
+                          <Progress value={data.accessibility || 0} className="h-2" />
+                          <div className="text-xs">{data.accessibility || 0}%</div>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="text-xs text-muted-foreground">Best Practices</div>
+                          <Progress value={data.bestPractices || 0} className="h-2" />
+                          <div className="text-xs">{data.bestPractices || 0}%</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <div className="text-center py-12">
                   <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />

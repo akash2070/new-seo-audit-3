@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- SEO Audit Tool -->
+  <url>
+    <loc>https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/#quick-audit</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Analytics Dashboard -->
+  <url>
+    <loc>https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/#dashboard</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Keyword Analysis -->
+  <url>
+    <loc>https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/#keyword-analysis</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Competitor Analysis -->
+  <url>
+    <loc>https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/#competitor-analysis</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Bulk Analysis -->
+  <url>
+    <loc>https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/#bulk-analysis</loc>
+    <lastmod>2025-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

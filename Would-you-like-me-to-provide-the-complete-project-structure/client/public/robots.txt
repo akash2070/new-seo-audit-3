@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://cdcbf5b9-8a46-4571-b216-9a6bc9ed66e9-00-2g9swgpon0b6e.spock.replit.dev/sitemap.xml
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
+
+# Block access to certain directories if needed
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all search engines to crawl the site
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

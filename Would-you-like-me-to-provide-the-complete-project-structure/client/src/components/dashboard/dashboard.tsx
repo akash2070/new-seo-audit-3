@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { TrendingUp, TrendingDown, Globe, Star, Plus, Calendar, Activity } from 'lucide-react';
+import { TrendingUp, TrendingDown, Globe, Star, Plus, Calendar, Activity } from '@/components/icons';
 import type { Website, AuditResponse } from '@shared/schema';
 
 interface DashboardStats {

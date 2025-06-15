@@ -1,8 +1,16 @@
-[phases.build]
-cmd = "npm ci && npm run build"
+[phases.setup]
+nixPkgs = ['nodejs-20']
 
-[phases.start]
+[phases.install]
+cmd = "npm ci --prefer-offline --no-audit --progress=false"
+
+[phases.build]
+cmd = "npm run build"
+
+[start]
 cmd = "npm start"
 
 [variables]
 NODE_ENV = "production"
+NPM_CONFIG_PRODUCTION = "false"
+NIXPACKS_BUILD_MEMORY = "2048"
